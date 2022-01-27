@@ -1,0 +1,2884 @@
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+437  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+500  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+500  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+547  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+3374 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+265393 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@3249ab2d]
+268221 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@3249ab2d]
+270467 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@3249ab2d]
+738749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.dostawca_dostawca_id_seq
+738749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Dostawca (
+                dostawca_id INTEGER NOT NULL DEFAULT nextval('public.dostawca_dostawca_id_seq'),
+                CONSTRAINT dostawca_id PRIMARY KEY (dostawca_id)
+)
+738749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.dostawca_dostawca_id_seq OWNED BY public.Dostawca.dostawca_id
+738749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazayn (
+                magazyn_id VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id)
+)
+738749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.adres_adres_id_seq
+738749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_budynku VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+738749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+738749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+738749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                dostawca_id INTEGER NOT NULL,
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id, dostawca_id)
+)
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id, adres_id)
+)
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id, wydawca_id)
+)
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                data DATE NOT NULL,
+                ilosc INTEGER NOT NULL,
+                status VARCHAR NOT NULL,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor_Ksiazka (
+                autor_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                CONSTRAINT autor_ksiazka_id PRIMARY KEY (autor_id, ksiazka_id)
+)
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER TABLE public.Metoda_Dostawy ADD CONSTRAINT dostawca_metoda_dostawy_fk
+FOREIGN KEY (dostawca_id)
+REFERENCES public.Dostawca (dostawca_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Klient ADD CONSTRAINT adres_klient_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ksiazka ADD CONSTRAINT wydawca_ksiazka_fk
+FOREIGN KEY (wydawca_id)
+REFERENCES public.Wydawca (wydawca_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT autor_ksiazka_autor_fk
+FOREIGN KEY (autor_id)
+REFERENCES public.Autor (autor_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT ksiazka_ksiazka_autor_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+738764 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :35
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.dostawca_dostawca_id_seq
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Dostawca (
+                dostawca_id INTEGER NOT NULL DEFAULT nextval('public.dostawca_dostawca_id_seq'),
+                CONSTRAINT dostawca_id PRIMARY KEY (dostawca_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.dostawca_dostawca_id_seq OWNED BY public.Dostawca.dostawca_id
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazayn (
+                magazyn_id VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.adres_adres_id_seq
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_budynku VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                dostawca_id INTEGER NOT NULL,
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id, dostawca_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id, adres_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id, wydawca_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                data DATE NOT NULL,
+                ilosc INTEGER NOT NULL,
+                status VARCHAR NOT NULL,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor_Ksiazka (
+                autor_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                CONSTRAINT autor_ksiazka_id PRIMARY KEY (autor_id, ksiazka_id)
+)
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER TABLE public.Metoda_Dostawy ADD CONSTRAINT dostawca_metoda_dostawy_fk
+FOREIGN KEY (dostawca_id)
+REFERENCES public.Dostawca (dostawca_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Klient ADD CONSTRAINT adres_klient_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+752816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ksiazka ADD CONSTRAINT wydawca_ksiazka_fk
+FOREIGN KEY (wydawca_id)
+REFERENCES public.Wydawca (wydawca_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+752831 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+752831 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT autor_ksiazka_autor_fk
+FOREIGN KEY (autor_id)
+REFERENCES public.Autor (autor_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+752831 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT ksiazka_ksiazka_autor_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+752831 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+752831 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :35
+853599 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@3249ab2d]
+1272199 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@3249ab2d]
+1274051 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@3249ab2d]
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+856  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+987  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+987  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+1056 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+5967 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+235715 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@39e46c39]
+237419 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@39e46c39]
+339807 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@39e46c39]
+2357727 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+2357727 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+2357727 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+2357727 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+2365342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@39e46c39]
+2401565 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+2401565 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+2401565 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+2538033 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.adres_adres_id_seq
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_domu VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.magazyn_magazyn_id_seq
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn (
+                magazyn_id INTEGER NOT NULL DEFAULT nextval('public.magazyn_magazyn_id_seq'),
+                adres_id INTEGER NOT NULL,
+                telefon VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id, adres_id)
+)
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.magazyn_magazyn_id_seq OWNED BY public.Magazyn.magazyn_id
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                czas_dostawy VARCHAR NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id)
+)
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id, adres_id)
+)
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                zyciorys VARCHAR,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                data_publikacji DATE NOT NULL,
+                opis VARCHAR,
+                cena REAL NOT NULL,
+                magazyn_id VARCHAR NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id, wydawca_id)
+)
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn_Ksiazka (
+                magazyn_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ilosc INTEGER NOT NULL,
+                CONSTRAINT magazyn_ksiazka_pk PRIMARY KEY (magazyn_id, ksiazka_id)
+)
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                data DATE NOT NULL,
+                status VARCHAR NOT NULL,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Klient ADD CONSTRAINT adres_klient_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT adres_magazyn_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT magazyn_magazyn_ksiazka_fk
+FOREIGN KEY (magazyn_id)
+REFERENCES public.Magazyn (magazyn_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ksiazka ADD CONSTRAINT wydawca_ksiazka_fk
+FOREIGN KEY (wydawca_id)
+REFERENCES public.Wydawca (wydawca_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2538040 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2538056 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2538056 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT ksiazka_magazyn_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2538056 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :34
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.adres_adres_id_seq
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_domu VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.magazyn_magazyn_id_seq
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn (
+                magazyn_id INTEGER NOT NULL DEFAULT nextval('public.magazyn_magazyn_id_seq'),
+                adres_id INTEGER NOT NULL,
+                telefon VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id, adres_id)
+)
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.magazyn_magazyn_id_seq OWNED BY public.Magazyn.magazyn_id
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                czas_dostawy VARCHAR NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id)
+)
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+2602086 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id, adres_id)
+)
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                zyciorys VARCHAR,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor_Ksiazka (
+                autor_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                CONSTRAINT autor_ksiazka_pk PRIMARY KEY (autor_id)
+)
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                data_publikacji DATE NOT NULL,
+                opis VARCHAR,
+                cena REAL NOT NULL,
+                magazyn_id VARCHAR NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id)
+)
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn_Ksiazka (
+                magazyn_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ilosc INTEGER NOT NULL,
+                CONSTRAINT magazyn_ksiazka_pk PRIMARY KEY (magazyn_id, ksiazka_id)
+)
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                data DATE NOT NULL,
+                status VARCHAR NOT NULL,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Klient ADD CONSTRAINT adres_klient_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT adres_magazyn_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT magazyn_magazyn_ksiazka_fk
+FOREIGN KEY (magazyn_id)
+REFERENCES public.Magazyn (magazyn_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT autor_autor_ksiazka_fk
+FOREIGN KEY (autor_id)
+REFERENCES public.Autor (autor_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT ksiazka_magazyn_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2602102 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :35
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.adres_adres_id_seq
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_domu VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.magazyn_magazyn_id_seq
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn (
+                magazyn_id INTEGER NOT NULL DEFAULT nextval('public.magazyn_magazyn_id_seq'),
+                adres_id INTEGER NOT NULL,
+                telefon VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id, adres_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.magazyn_magazyn_id_seq OWNED BY public.Magazyn.magazyn_id
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                czas_dostawy VARCHAR NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id, adres_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                zyciorys VARCHAR,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                data_publikacji DATE NOT NULL,
+                opis VARCHAR,
+                cena REAL NOT NULL,
+                magazyn_id VARCHAR NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor_Ksiazka (
+                autor_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                CONSTRAINT autor_ksiazka_pk PRIMARY KEY (autor_id, ksiazka_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE public.Magazyn_Ksiazka (
+                magazyn_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ilosc INTEGER NOT NULL,
+                CONSTRAINT magazyn_ksiazka_pk PRIMARY KEY (magazyn_id, ksiazka_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                data DATE NOT NULL,
+                status VARCHAR NOT NULL,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Klient ADD CONSTRAINT adres_klient_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT adres_magazyn_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT magazyn_magazyn_ksiazka_fk
+FOREIGN KEY (magazyn_id)
+REFERENCES public.Magazyn (magazyn_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT autor_autor_ksiazka_fk
+FOREIGN KEY (autor_id)
+REFERENCES public.Autor (autor_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT ksiazka_magazyn_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT ksiazka_autor_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2609582 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :36
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.adres_adres_id_seq
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_domu VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.magazyn_magazyn_id_seq
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn (
+                magazyn_id INTEGER NOT NULL DEFAULT nextval('public.magazyn_magazyn_id_seq'),
+                adres_id INTEGER NOT NULL,
+                telefon VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id, adres_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.magazyn_magazyn_id_seq OWNED BY public.Magazyn.magazyn_id
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                czas_dostawy VARCHAR NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id, adres_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                zyciorys VARCHAR,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                data_publikacji DATE NOT NULL,
+                opis VARCHAR,
+                cena REAL NOT NULL,
+                magazyn_id VARCHAR NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id, wydawca_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor_Ksiazka (
+                autor_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                CONSTRAINT autor_ksiazka_pk PRIMARY KEY (autor_id, ksiazka_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE public.Magazyn_Ksiazka (
+                magazyn_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ilosc INTEGER NOT NULL,
+                CONSTRAINT magazyn_ksiazka_pk PRIMARY KEY (magazyn_id, ksiazka_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                data DATE NOT NULL,
+                status VARCHAR NOT NULL,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Klient ADD CONSTRAINT adres_klient_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT adres_magazyn_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT magazyn_magazyn_ksiazka_fk
+FOREIGN KEY (magazyn_id)
+REFERENCES public.Magazyn (magazyn_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ksiazka ADD CONSTRAINT wydawca_ksiazka_fk
+FOREIGN KEY (wydawca_id)
+REFERENCES public.Wydawca (wydawca_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT autor_autor_ksiazka_fk
+FOREIGN KEY (autor_id)
+REFERENCES public.Autor (autor_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT ksiazka_magazyn_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT ksiazka_autor_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+2621525 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :37
+2856444 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@39e46c39]
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.ocena_ocena_id_seq
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ocena (
+                ocena_id INTEGER NOT NULL DEFAULT nextval('public.ocena_ocena_id_seq'),
+                CONSTRAINT ocena_id PRIMARY KEY (ocena_id)
+)
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ocena_ocena_id_seq OWNED BY public.Ocena.ocena_id
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.kierownik_kierownik_id_seq
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Kierownik (
+                kierownik_id INTEGER NOT NULL DEFAULT nextval('public.kierownik_kierownik_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR,
+                CONSTRAINT kierownik_id PRIMARY KEY (kierownik_id)
+)
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.kierownik_kierownik_id_seq OWNED BY public.Kierownik.kierownik_id
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.adres_adres_id_seq
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_domu VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.magazyn_magazyn_id_seq
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn (
+                magazyn_id INTEGER NOT NULL DEFAULT nextval('public.magazyn_magazyn_id_seq'),
+                adres_id INTEGER NOT NULL,
+                kierownik_id INTEGER NOT NULL,
+                telefon VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id, adres_id, kierownik_id)
+)
+3006911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.magazyn_magazyn_id_seq OWNED BY public.Magazyn.magazyn_id
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                czas_dostawy VARCHAR NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id)
+)
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR NOT NULL,
+                haslo VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id, adres_id)
+)
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                opis VARCHAR,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                data_publikacji DATE NOT NULL,
+                opis VARCHAR,
+                cena REAL NOT NULL,
+                magazyn_id VARCHAR NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id, wydawca_id)
+)
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor_Ksiazka (
+                autor_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                CONSTRAINT autor_ksiazka_pk PRIMARY KEY (autor_id, ksiazka_id)
+)
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE public.Magazyn_Ksiazka (
+                magazyn_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ilosc INTEGER NOT NULL,
+                CONSTRAINT magazyn_ksiazka_pk PRIMARY KEY (magazyn_id, ksiazka_id)
+)
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                data_zamowienia DATE NOT NULL,
+                status VARCHAR NOT NULL,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT kierownik_magazyn_fk
+FOREIGN KEY (kierownik_id)
+REFERENCES public.Kierownik (kierownik_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Klient ADD CONSTRAINT adres_klient_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT adres_magazyn_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT magazyn_magazyn_ksiazka_fk
+FOREIGN KEY (magazyn_id)
+REFERENCES public.Magazyn (magazyn_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ksiazka ADD CONSTRAINT wydawca_ksiazka_fk
+FOREIGN KEY (wydawca_id)
+REFERENCES public.Wydawca (wydawca_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT autor_autor_ksiazka_fk
+FOREIGN KEY (autor_id)
+REFERENCES public.Autor (autor_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT ksiazka_magazyn_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT ksiazka_autor_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3006926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :44
+3107121 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3107121 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3107121 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3168441 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3168441 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3168441 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3180650 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3180650 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3181124 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3181124 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3181124 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208629 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3208645 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setTopLeftCorner
+3209836 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3209836 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.kierownik_kierownik_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Kierownik (
+                kierownik_id INTEGER NOT NULL DEFAULT nextval('public.kierownik_kierownik_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR,
+                CONSTRAINT kierownik_id PRIMARY KEY (kierownik_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.kierownik_kierownik_id_seq OWNED BY public.Kierownik.kierownik_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.adres_adres_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_domu VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.magazyn_magazyn_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn (
+                magazyn_id INTEGER NOT NULL DEFAULT nextval('public.magazyn_magazyn_id_seq'),
+                adres_id INTEGER NOT NULL,
+                kierownik_id INTEGER NOT NULL,
+                telefon VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id, adres_id, kierownik_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.magazyn_magazyn_id_seq OWNED BY public.Magazyn.magazyn_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                czas_dostawy VARCHAR NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR NOT NULL,
+                haslo VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                opis VARCHAR,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                data_publikacji DATE NOT NULL,
+                opis VARCHAR,
+                cena REAL NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ocena_ocena_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ocena (
+                ocena_id INTEGER NOT NULL DEFAULT nextval('public.ocena_ocena_id_seq'),
+                klient_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ocena REAL NOT NULL,
+                komentarz VARCHAR,
+                CONSTRAINT ocena_id PRIMARY KEY (ocena_id, klient_id, ksiazka_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ocena_ocena_id_seq OWNED BY public.Ocena.ocena_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor_Ksiazka (
+                autor_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                CONSTRAINT autor_ksiazka_pk PRIMARY KEY (autor_id, ksiazka_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE public.Magazyn_Ksiazka (
+                magazyn_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ilosc INTEGER NOT NULL,
+                CONSTRAINT magazyn_ksiazka_pk PRIMARY KEY (magazyn_id, ksiazka_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                data_zamowienia DATE NOT NULL,
+                status VARCHAR NOT NULL,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT kierownik_magazyn_fk
+FOREIGN KEY (kierownik_id)
+REFERENCES public.Kierownik (kierownik_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT adres_magazyn_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT magazyn_magazyn_ksiazka_fk
+FOREIGN KEY (magazyn_id)
+REFERENCES public.Magazyn (magazyn_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ocena ADD CONSTRAINT klient_ocena_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT autor_autor_ksiazka_fk
+FOREIGN KEY (autor_id)
+REFERENCES public.Autor (autor_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT ksiazka_magazyn_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT ksiazka_autor_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ocena ADD CONSTRAINT ksiazka_ocena_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+3293742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :44
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+416  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+485  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+485  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+517  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+3573 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+68922 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.kierownik_kierownik_id_seq
+68925 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Kierownik (
+                kierownik_id INTEGER NOT NULL DEFAULT nextval('public.kierownik_kierownik_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR,
+                CONSTRAINT kierownik_id PRIMARY KEY (kierownik_id)
+)
+68926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.kierownik_kierownik_id_seq OWNED BY public.Kierownik.kierownik_id
+68926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.adres_adres_id_seq
+68926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_domu VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+68926 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+68927 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.magazyn_magazyn_id_seq
+68927 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn (
+                magazyn_id INTEGER NOT NULL DEFAULT nextval('public.magazyn_magazyn_id_seq'),
+                adres_id INTEGER NOT NULL,
+                kierownik_id INTEGER NOT NULL,
+                telefon VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id, adres_id, kierownik_id)
+)
+68927 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.magazyn_magazyn_id_seq OWNED BY public.Magazyn.magazyn_id
+68927 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+68928 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                czas_dostawy VARCHAR NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id)
+)
+68928 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+68928 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+68928 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+68928 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+68929 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+68929 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR NOT NULL,
+                haslo VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id, adres_id)
+)
+68929 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+68929 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+68930 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                opis VARCHAR,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+68930 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+68930 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+68930 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                data_publikacji DATE NOT NULL,
+                opis VARCHAR,
+                cena REAL NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id, wydawca_id)
+)
+68931 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+68931 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ocena_ocena_id_seq
+68931 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ocena (
+                ocena_id INTEGER NOT NULL DEFAULT nextval('public.ocena_ocena_id_seq'),
+                klient_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ocena REAL NOT NULL,
+                komentarz VARCHAR,
+                CONSTRAINT ocena_id PRIMARY KEY (ocena_id, klient_id, ksiazka_id)
+)
+68931 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ocena_ocena_id_seq OWNED BY public.Ocena.ocena_id
+68931 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor_Ksiazka (
+                autor_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                CONSTRAINT autor_ksiazka_pk PRIMARY KEY (autor_id, ksiazka_id)
+)
+68932 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE public.Magazyn_Ksiazka (
+                magazyn_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ilosc INTEGER NOT NULL,
+                CONSTRAINT magazyn_ksiazka_pk PRIMARY KEY (magazyn_id, ksiazka_id)
+)
+68932 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+68932 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                data_zamowienia DATE NOT NULL,
+                status VARCHAR NOT NULL,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+68932 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+68933 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT kierownik_magazyn_fk
+FOREIGN KEY (kierownik_id)
+REFERENCES public.Kierownik (kierownik_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68933 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68934 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT adres_magazyn_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68934 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Klient ADD CONSTRAINT adres_klient_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68934 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT magazyn_magazyn_ksiazka_fk
+FOREIGN KEY (magazyn_id)
+REFERENCES public.Magazyn (magazyn_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68935 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68935 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ksiazka ADD CONSTRAINT wydawca_ksiazka_fk
+FOREIGN KEY (wydawca_id)
+REFERENCES public.Wydawca (wydawca_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68935 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68936 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ocena ADD CONSTRAINT klient_ocena_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68936 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT autor_autor_ksiazka_fk
+FOREIGN KEY (autor_id)
+REFERENCES public.Autor (autor_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68936 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68937 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT ksiazka_magazyn_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68937 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT ksiazka_autor_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68937 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ocena ADD CONSTRAINT ksiazka_ocena_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+68940 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :46
+111494 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.DBTree  - DBTree: exporting list of DnD-type tree paths
+138561 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@a5180be]
+139808 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@a5180be]
+167140 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@a5180be]
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+432  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+501  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+501  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+532  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+3411 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+587  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+656  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+671  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+702  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+3858 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+437  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+506  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+506  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+537  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+3598 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+23758 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@7b8ae2b9]
+92320 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.kierownik_kierownik_id_seq
+92320 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Kierownik (
+                kierownik_id INTEGER NOT NULL DEFAULT nextval('public.kierownik_kierownik_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR,
+                CONSTRAINT kierownik_id PRIMARY KEY (kierownik_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.kierownik_kierownik_id_seq OWNED BY public.Kierownik.kierownik_id
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.adres_adres_id_seq
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Adres (
+                adres_id INTEGER NOT NULL DEFAULT nextval('public.adres_adres_id_seq'),
+                kraj VARCHAR NOT NULL,
+                miasto VARCHAR NOT NULL,
+                kod_pocztowy VARCHAR NOT NULL,
+                ulica VARCHAR NOT NULL,
+                nr_budynku VARCHAR NOT NULL,
+                nr_mieszkania VARCHAR,
+                CONSTRAINT adres_id PRIMARY KEY (adres_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.adres_adres_id_seq OWNED BY public.Adres.adres_id
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.magazyn_magazyn_id_seq
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Magazyn (
+                magazyn_id INTEGER NOT NULL DEFAULT nextval('public.magazyn_magazyn_id_seq'),
+                adres_id INTEGER NOT NULL,
+                kierownik_id INTEGER NOT NULL,
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                CONSTRAINT magazyn_id PRIMARY KEY (magazyn_id, adres_id, kierownik_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.magazyn_magazyn_id_seq OWNED BY public.Magazyn.magazyn_id
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.metoda_dostawy_metoda_id_seq
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Metoda_Dostawy (
+                metoda_id INTEGER NOT NULL DEFAULT nextval('public.metoda_dostawy_metoda_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                cena REAL NOT NULL,
+                czas_dostawy_od INTEGER NOT NULL,
+                czas_dostawy_do INTEGER NOT NULL,
+                CONSTRAINT metoda_id PRIMARY KEY (metoda_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.metoda_dostawy_metoda_id_seq OWNED BY public.Metoda_Dostawy.metoda_id
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.wydawca_wydawca_id_seq
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Wydawca (
+                wydawca_id INTEGER NOT NULL DEFAULT nextval('public.wydawca_wydawca_id_seq'),
+                nazwa VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                strona_www VARCHAR,
+                CONSTRAINT wydawca_id PRIMARY KEY (wydawca_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.wydawca_wydawca_id_seq OWNED BY public.Wydawca.wydawca_id
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.klient_klient_id_seq
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Klient (
+                klient_id INTEGER NOT NULL DEFAULT nextval('public.klient_klient_id_seq'),
+                adres_id INTEGER NOT NULL,
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                telefon VARCHAR NOT NULL,
+                email VARCHAR NOT NULL,
+                haslo VARCHAR NOT NULL,
+                CONSTRAINT klient_id PRIMARY KEY (klient_id, adres_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.klient_klient_id_seq OWNED BY public.Klient.klient_id
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.autor_autor_id_seq
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor (
+                autor_id INTEGER NOT NULL DEFAULT nextval('public.autor_autor_id_seq'),
+                imie VARCHAR NOT NULL,
+                nazwisko VARCHAR NOT NULL,
+                data_urodzenia DATE NOT NULL,
+                data_smierci DATE,
+                opis VARCHAR,
+                CONSTRAINT autor_id PRIMARY KEY (autor_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.autor_autor_id_seq OWNED BY public.Autor.autor_id
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ksiazka_ksiazka_id_seq
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ksiazka (
+                ksiazka_id INTEGER NOT NULL DEFAULT nextval('public.ksiazka_ksiazka_id_seq'),
+                wydawca_id INTEGER NOT NULL,
+                tytul VARCHAR NOT NULL,
+                isbn VARCHAR NOT NULL,
+                gatunek VARCHAR NOT NULL,
+                liczba_stron INTEGER NOT NULL,
+                rok_wydania DATE NOT NULL,
+                opis VARCHAR,
+                cena REAL NOT NULL,
+                CONSTRAINT ksiazka_id PRIMARY KEY (ksiazka_id, wydawca_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ksiazka_ksiazka_id_seq OWNED BY public.Ksiazka.ksiazka_id
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.ocena_ocena_id_seq
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Ocena (
+                ocena_id INTEGER NOT NULL DEFAULT nextval('public.ocena_ocena_id_seq'),
+                klient_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ocena REAL NOT NULL,
+                komentarz VARCHAR,
+                CONSTRAINT ocena_id PRIMARY KEY (ocena_id, klient_id, ksiazka_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.ocena_ocena_id_seq OWNED BY public.Ocena.ocena_id
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Autor_Ksiazka (
+                autor_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                CONSTRAINT autor_ksiazka_pk PRIMARY KEY (autor_id, ksiazka_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE TABLE public.Magazyn_Ksiazka (
+                magazyn_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                ilosc INTEGER NOT NULL,
+                CONSTRAINT magazyn_ksiazka_pk PRIMARY KEY (magazyn_id, ksiazka_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.zamowienie_zamowienie_id_seq
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Zamowienie (
+                zamowienie_id INTEGER NOT NULL DEFAULT nextval('public.zamowienie_zamowienie_id_seq'),
+                klient_id INTEGER NOT NULL,
+                metoda_id INTEGER NOT NULL,
+                ksiazka_id INTEGER NOT NULL,
+                adres_id INTEGER NOT NULL,
+                ilosc INTEGER NOT NULL,
+                data_zamowienia DATE NOT NULL,
+                status VARCHAR NOT NULL,
+                data_wyslania DATE,
+                CONSTRAINT zamowienie_id PRIMARY KEY (zamowienie_id, klient_id, metoda_id, ksiazka_id, adres_id)
+)
+92335 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.zamowienie_zamowienie_id_seq OWNED BY public.Zamowienie.zamowienie_id
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT kierownik_magazyn_fk
+FOREIGN KEY (kierownik_id)
+REFERENCES public.Kierownik (kierownik_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT adres_zamowienie_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn ADD CONSTRAINT adres_magazyn_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Klient ADD CONSTRAINT adres_klient_fk
+FOREIGN KEY (adres_id)
+REFERENCES public.Adres (adres_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT magazyn_magazyn_ksiazka_fk
+FOREIGN KEY (magazyn_id)
+REFERENCES public.Magazyn (magazyn_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT metoda_dostawy_zamowienie_fk
+FOREIGN KEY (metoda_id)
+REFERENCES public.Metoda_Dostawy (metoda_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ksiazka ADD CONSTRAINT wydawca_ksiazka_fk
+FOREIGN KEY (wydawca_id)
+REFERENCES public.Wydawca (wydawca_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT klient_zamowienie_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ocena ADD CONSTRAINT klient_ocena_fk
+FOREIGN KEY (klient_id)
+REFERENCES public.Klient (klient_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT autor_autor_ksiazka_fk
+FOREIGN KEY (autor_id)
+REFERENCES public.Autor (autor_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Zamowienie ADD CONSTRAINT ksiazka_zamowienie_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Magazyn_Ksiazka ADD CONSTRAINT ksiazka_magazyn_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Autor_Ksiazka ADD CONSTRAINT ksiazka_autor_ksiazka_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Ocena ADD CONSTRAINT ksiazka_ocena_fk
+FOREIGN KEY (ksiazka_id)
+REFERENCES public.Ksiazka (ksiazka_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+92342 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :46
