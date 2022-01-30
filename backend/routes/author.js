@@ -48,7 +48,7 @@ module.exports = (pool) => {
     } catch (err) {
       responseMessage = response.message(true, "Wystąpił błąd podczas dodawania rekordu: " + err);
     }
-
+    
     res.send(responseMessage);
   });
 

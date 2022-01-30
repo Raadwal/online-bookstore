@@ -1,9 +1,11 @@
 const config = require("./config");
 const express = require("express");
+const cors = require("cors");
 const { types, Pool, Client } = require("pg");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const server = app.listen(config.host.port, config.host.hostname, function () {
   const host = server.address().address;
@@ -20,7 +22,6 @@ const pool = new Pool({
   database: config.database.dbName,
 });
 
-
 app.use("/book", require("./routes/book")(pool));
 app.use("/author-book", require("./routes/author-book")(pool));
 app.use("/author", require("./routes/author")(pool));
@@ -35,3 +36,5 @@ app.use("/client", require("./routes/client")(pool));
 app.use("/address", require("./routes/address")(pool));
 
 app.use("/examples", require("./routes/examples")(pool));
+app.use("/views", require("./routes/views")(pool));
+app.use("/advanced-forms", require("./routes/advanced-forms")(pool));

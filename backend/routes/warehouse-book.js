@@ -33,12 +33,11 @@ module.exports = (pool) => {
     const bookId = body.bookId;
     const publisherId = body.publisherId;
     const warehouseId = body.warehouseId;
-    const managerId = body.managerId;
     const addressId = body.addressId;
     const quantity = body.quantity;
 
-    const sql = "INSERT INTO ksiegarnia.magazyn_ksiazka(ksiazka_id, wydawca_id, magazyn_id, kierownik_id, adres_id, ilosc) VALUES($1, $2, $3, $4, $5, $6)";
-    const values = [bookId, publisherId, warehouseId, managerId, addressId, quantity];
+    const sql = "INSERT INTO ksiegarnia.magazyn_ksiazka(ksiazka_id, wydawca_id, magazyn_id, adres_id, ilosc) VALUES($1, $2, $3, $4, $5)";
+    const values = [bookId, publisherId, warehouseId, addressId, quantity];
 
     try {
       const res = await pool.query(sql, values);

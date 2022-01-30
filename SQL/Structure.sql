@@ -87,6 +87,10 @@ CREATE TABLE ksiegarnia.klient (
 
 ALTER SEQUENCE ksiegarnia.klient_klient_id_seq OWNED BY ksiegarnia.klient.klient_id;
 
+CREATE UNIQUE INDEX klient_idx
+ ON ksiegarnia.klient
+ ( email );
+
 CREATE SEQUENCE ksiegarnia.autor_autor_id_seq;
 
 CREATE TABLE ksiegarnia.autor (
@@ -119,6 +123,10 @@ CREATE TABLE ksiegarnia.ksiazka (
 
 
 ALTER SEQUENCE ksiegarnia.ksiazka_ksiazka_id_seq OWNED BY ksiegarnia.ksiazka.ksiazka_id;
+
+CREATE UNIQUE INDEX ksiazka_idx
+ ON ksiegarnia.ksiazka
+ ( isbn );
 
 CREATE SEQUENCE ksiegarnia.zamowienie_zamowienie_id_seq;
 
