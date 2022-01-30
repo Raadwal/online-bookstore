@@ -195,7 +195,7 @@ CREATE OR REPLACE FUNCTION ksiegarnia.dodaj_magazyn(_nazwa VARCHAR, _magazyn_tel
         END IF;
 
         IF adresIstnieje = 1 THEN
-            RAISE EXCEPTION 'Magazyn pod tym adresem już istnieje!';
+            RAISE EXCEPTION 'Magazyn pod tym adresem juz istnieje!';
         ELSE 
             INSERT INTO ksiegarnia.magazyn(adres_id, kierownik_id, nazwa, telefon)
             VALUES(adresID, kierownikID, _nazwa, _magazyn_telefon);

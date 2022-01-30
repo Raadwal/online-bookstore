@@ -118,7 +118,7 @@ module.exports = (pool) => {
       res.rows.forEach((element) => {
         result.push({
           quantity: element["ilosc"],
-          isbn: element["ISBN"],
+          isbn: element["isbn"],
           publisher: element["wydawca_nazwa"],
           phone: element["wydawca_telefon"],
         });
